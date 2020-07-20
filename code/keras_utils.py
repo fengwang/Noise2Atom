@@ -88,57 +88,8 @@ def read_weights(directory, model):
     model.load_weights( weights_path )
     return True
 
-'''
-    Example:
-        all_images = make_image_set( './training_set' )
-
-    this will return a numpy array with datatype uint8
-'''
-def make_image_set( paths, images_to_use=None, trimmed_shape=None ):
-
-    def trim_to( image, new_shape ):
-        r, c, *_ = image.shape
-        r_, c_, *_ = new_shape
-        offset_r, offset_c = ((r-r_) >> 1), ((c-c_)>>1)
-        return image[offset_r:offset_r+r_, offset_c:offset_c+c_]
-
-    # arrange image order
-    image_paths = glob.glob( paths )
-    image_paths.sort()
-
-    # determine numbers of images in dataset
-    images_to_use = len(image_paths)
-    if images_to_use is not None:
-        images_to_use = min( images_to_use, len(image_paths) )
-
-    # case of empty directory
-    if images_to_use == 0:
-        return []
-
-    # determine row, col and channels
-    first_image = imageio.imread( image_paths[0] )
-
-    row, col, *_ = first_image.shape
-    if trimmed_shape is not None:
-        row, col = trimmed_shape
-
-    channels = 3
-    if len(first_image.shape) == 2:
-        channels = 1
-
-    # load images one by one
-    total_image_set = np.zeros( (images_to_use, row, col, channels), dtype='uint8' )
-    if trimmed_shape is not None:
-        for idx in range( images_to_use ):
-            total_image_set[idx] = trim_to( np.asarray( imageio.imread( image_paths[idx] ), dtype='uint8' ), (row, col) ).reshape((row, col, channels))
-    else:
-        for idx in range( images_to_use ):
-            total_image_set[idx] =  np.asarray( imageio.imread( image_paths[idx] ), dtype='uint8' ).reshape((row, col, channels))
-
-    return total_image_set
-
 if __name__ == '__main__':
-    if 0:
+    if 1:
         from tensorflow.keras.models import Model
         from tensorflow.keras.layers import Input
         from tensorflow.keras.layers import Conv2D
@@ -155,10 +106,4 @@ if __name__ == '__main__':
         write_model_checkpoint( './tmp', new_model )
         model_se = read_model_checkpoint( './tmp' )
         model_se.summary()
-
-    if 1:
-        images = make_image_set( '/raid/feng/wallpapers/music/*.jpg', images_to_use=16, trimmed_shape=(512,512) )
-        for idx in range( 16 ):
-            imageio.imsave( f'./tmp/dumped_{idx}.png', images[idx] )
-
 
