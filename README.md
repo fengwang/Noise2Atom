@@ -19,5 +19,13 @@
 We use [a telegram bot](https://core.telegram.org/bots) to monitor the real time training process.
 The private key and private chat id in file `code/message.py` should be updated before training.
 
+## Denoising on your own dataset
 
+- Simulating Gaussian-like atomic images by using routine implemented in file `code/simulate_physical_model.py`.
+- Config then execute the training routine implemented in file `code/train.py`
+
+
+## License
+
+agplv3
 
