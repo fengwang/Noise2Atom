@@ -2,6 +2,8 @@
 
 ----
 
+## [Noise2Atom](http://fengwang.github.io/noise2atom)
+
 ## Requirements:
 
 - Python 3.8.5
@@ -15,10 +17,7 @@
 
 
 We use [a telegram bot](https://core.telegram.org/bots) to monitor the real time training process.
-The private key and private chat id in file `code/message.py` should be updated ahead of training.
-Or you can just empty  the code of the `send_message` and `send_file` in this file.
-
-kkk
+The private key and private chat id in file `code/message.py` should be updated before training.
 
 
 

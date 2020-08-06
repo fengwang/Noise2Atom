@@ -35,7 +35,7 @@ for r in range( 16 ):
         noisy_images[offset*n:(1+offset)*n] = noisy_images_[:,r*128:(r+1)*128, c*128:(c+1)*128]
 print( 'noisy image converted' )
 
-io.imsave( f'/raid/feng/cache/train_wasserstein_28_denoising/noisy_experimental_{training_index}.tif', noisy_images )
+#io.imsave( f'/raid/feng/cache/train_wasserstein_28_denoising/noisy_experimental_{training_index}.tif', noisy_images )
 n_noisy_images, *_ = noisy_images.shape
 print( f'{n_noisy_images} noisy images loaded' )
 
@@ -43,7 +43,8 @@ import numpy as np
 noisy_images = np.asarray( noisy_images, dtype='float32' ) / (np.amax( noisy_images ) + 1.0e-10)
 noisy_images = noisy_images.reshape( noisy_images.shape + (1,) )
 
-batch_size = 6 # training batch
+#batch_size = 6 # training batch
+from model import batch_size
 simulated_image_input = np.zeros( (batch_size, 128, 128, 1 ) )
 
 noisy_counter = 0

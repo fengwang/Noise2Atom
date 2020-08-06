@@ -19,6 +19,8 @@ from tensorflow.python.keras.layers.merge import _Merge
 import numpy as np
 import tensorflow.keras.backend as K
 
+batch_size = 6
+
 layer_counter = 0
 def unique_name():
     global layer_counter
@@ -27,7 +29,8 @@ def unique_name():
 
 class RandomWeightedAverage(_Merge):
     def _merge_function(self,inputs):
-        alpha = K.random_uniform((6, 128, 128, 1))
+        global batch_size
+        alpha = K.random_uniform((batch_size, 128, 128, 1))
         return (alpha * inputs[0]) + ((1 - alpha) * inputs[1])
 
 def gradient_penalty_loss(y_true, y_pred, averaged_samples):
