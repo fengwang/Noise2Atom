@@ -20,6 +20,7 @@ import numpy as np
 import tensorflow.keras.backend as K
 
 batch_size = 6
+batch_size = 3
 
 layer_counter = 0
 def unique_name():

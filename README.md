@@ -7,12 +7,10 @@
 ## Requirements:
 
 - Python 3.8.5
-- Tensorflow 2.3.0
+- Tensorflow 1.14
 - opencv 4.4.0
 - python-imageio 2.8.0
-- python-tqdm 4.48.2
-- python-scikit-image 0.17.2
-- python-numpya 1.19.1
+- python-numpy 1.19.1
 - python-tifffile 2020.7.24
 - python-pathos 0.2.3
 
