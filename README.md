@@ -14,6 +14,7 @@
 - python-scikit-image 0.17.2
 - python-numpya 1.19.1
 - python-tifffile 2020.7.24
+- python-pathos 0.2.3
 
 
 We use [a telegram bot](https://core.telegram.org/bots) to monitor the real time training process.

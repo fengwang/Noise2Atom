@@ -123,6 +123,18 @@ def make_simulation(index):
         file_name = f'{directory}/{str(idx).zfill(4)}.png'
         imageio.imsave( file_name, simulated_images[idx, 64:192, 64:192] )
 
+import tifffile
+def simulate_atomic_images_as_tiff( images_to_generate, tiff_path, pixel_interval=8, range_of_columns=(75,150), sigmas=(1.0, 10.0), max_intensity=4, resolution=(128, 128) ):
+    r, c = resolution
+    simulated_images = fake_images( images_to_generate, dimension=(r+r, c+c), range_of_columns=range_of_columns, sigmas=sigmas, max_intensity=max_intensity, pixel_interval=pixel_interval )
+    simulated_images = np.asarray( normalize( simulated_images ) * 255.0, dtype='uint8')
+    #print( f'simulated images dimension: {simulated_images.shape}' )
+    cropped = simulated_images[:, (r>>1):(r>>1)+r, (c>>1):(c>>1)+c]
+    #print( f'cropped images dimension: {cropped.shape}' )
+    tifffile.imwrite( tiff_path, cropped, compress=6 )
+
+
+
 if __name__ == '__main__':
     indices = [ i for i in range( total_threads ) ]
     with Pool(multiprocessing.cpu_count()) as p:
