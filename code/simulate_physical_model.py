@@ -1,5 +1,5 @@
 from math import exp
-from pathos.multiprocessing import ProcessingPool as Pool
+#from pathos.multiprocessing import ProcessingPool as Pool
 from random import uniform
 import cv2
 import imageio
@@ -136,7 +136,8 @@ def simulate_atomic_images( images_to_generate, tiff_path=None, pixel_interval=8
 
 
 if __name__ == '__main__':
-    indices = [ i for i in range( total_threads ) ]
-    with Pool(multiprocessing.cpu_count()) as p:
-        p.map( make_simulation, indices )
+    simulate_atomic_images( 32, './test.tif' )
+    #indices = [ i for i in range( total_threads ) ]
+    #with Pool(multiprocessing.cpu_count()) as p:
+    #    p.map( make_simulation, indices )
 
