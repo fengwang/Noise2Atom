@@ -26,7 +26,7 @@ The private key and private chat id in file `code/message.py` should be updated 
 
 ## Cite us
 
-'''
+```
 @article{wang_noise2atom_2020,
 	title = {{Noise2Atom}: unsupervised denoising for scanning transmission electron microscopy images},
 	volume = {50},
@@ -44,8 +44,7 @@ The private key and private chat id in file `code/message.py` should be updated 
 	year = {2020},
 	pages = {23}
 }
-'''
-
+```
 
 
 ## License
