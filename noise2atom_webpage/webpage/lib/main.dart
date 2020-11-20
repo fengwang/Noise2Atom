@@ -317,7 +317,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children:<Widget>
                     [
                         Spacer(),
-                        makeButton( 'Paper' ),
+                        makeButton( 'Paper', 'https://link.springer.com/article/10.1186/s42649-020-00041-8' ),
                         Spacer(),
                         makeButton( 'Code', 'https://github.com/fengwang/Noise2Atom' ),
                         Spacer(),
